@@ -13,6 +13,6 @@ postRouter.get('/',authMiddleware,postController.getPostController);
 
 postRouter.get('/details/:postId',authMiddleware,postController.getPostDetailsController);
 
-// postRouter.delete('/:postId',authMiddleware,postController.deletePostController);
+postRouter.delete('/:postId',authMiddleware,postController.deletePostController);
 
 module.exports = postRouter
