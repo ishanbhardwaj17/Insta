@@ -97,9 +97,42 @@ async function deletePostController(req, res) {
     })
 }
 
+async function likePostController(req, res) {
+    const userId = req.user.id;
+    const postId = req.params.postId;
+
+    const post = await postModel.findById(postId);
+
+    if (!post) {
+        return res.status(404).json({
+            message: "Post not found"
+        })
+    }
+
+    const isAlreadyLiked = post.likes.includes(userId);
+
+    if (isAlreadyLiked) {
+        return res.status(400).json({
+            message: "You have already liked this post"
+        })
+    }
+
+    const like = await likeModel.create({
+        post: postId,
+        user: userId
+    })  
+
+    res.status(200).json({
+        message: "Post liked successfully.",
+        like
+    })
+}
+
+
 module.exports = {
     createPostController,
     getPostController,
     getPostDetailsController,
-    deletePostController
+    deletePostController,
+    likePostController
 }

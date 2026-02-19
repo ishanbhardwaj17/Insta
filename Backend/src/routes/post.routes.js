@@ -15,4 +15,7 @@ postRouter.get('/details/:postId',authMiddleware,postController.getPostDetailsCo
 
 postRouter.delete('/:postId',authMiddleware,postController.deletePostController);
 
+postRouter.post('/like/:postId',authMiddleware,postController.likePostController);
+// postRouter.post('/unlike/:postId',authMiddleware,postController.unlikePostController);
+
 module.exports = postRouter
