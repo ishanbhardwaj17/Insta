@@ -12,6 +12,10 @@ const routes = createBrowserRouter([
     path: '/register',
     element: <RegisterForm />,
   },
+  {
+    path : '*',
+    element : <h1>404 Not Found</h1>
+  }
 ])
 
 export default routes
