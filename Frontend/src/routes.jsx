@@ -15,6 +15,10 @@ const routes = createBrowserRouter([
   {
     path : '*',
     element : <h1>404 Not Found</h1>
+  },
+  {
+    path : '/',
+    element : <h1>Welcome to the Home Page</h1>
   }
 ])
 
