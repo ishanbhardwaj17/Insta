@@ -2,6 +2,7 @@ import { createBrowserRouter } from 'react-router-dom'
 
 import LoginForm from './features/auth/pages/LoginForm'
 import RegisterForm from './features/auth/pages/RegisterForm'
+import Feed from './features/post/pages/Feed'
 
 const routes = createBrowserRouter([
   {
@@ -18,7 +19,7 @@ const routes = createBrowserRouter([
   },
   {
     path : '/',
-    element : <h1>Welcome to the Home Page</h1>
+    element : <Feed />
   }
 ])
 
