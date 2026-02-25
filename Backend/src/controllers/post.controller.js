@@ -18,7 +18,7 @@ async function createPostController(req, res) {
     const post = await postModel.create({
         caption: req.body.caption,
         imgUrl: file.url,
-        user: decoded.id
+        user: req.user.id
     })
 
     res.status(201).json({
@@ -128,11 +128,20 @@ async function likePostController(req, res) {
     })
 }
 
+async function getFeedPostController(req, res) {
+    const post = await postModel.find().populate('user').sort({ createdAt: -1 });
+
+    res.status(200).json({
+        message: "Feed posts fetched successfully.",
+        post
+    })
+}
 
 module.exports = {
     createPostController,
     getPostController,
     getPostDetailsController,
     deletePostController,
-    likePostController
+    likePostController,
+    getFeedPostController
 }
